@@ -1,0 +1,89 @@
+mysql> CREATE DATABASE Company;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| cdac               |
+| company            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> USE COMPANY;
+Database changed
+mysql> CREATE TABLE Employees(
+    -> employee_id INT PRIMARY KEY,
+    -> first_name VARCHAR(50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> CREATE TABLE Employees(
+    -> employee_id INT PRIMARY KEY,
+    -> first_name VARCHAR(50),
+    -> last_name VARCHAR(50),
+    -> email VARCHAR(100),
+    -> hire_date DATE,
+    -> salary DECIMAL(10,2),
+    -> department_id INT);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc Employees;
++---------------+---------------+------+-----+---------+-------+
+| Field         | Type          | Null | Key | Default | Extra |
++---------------+---------------+------+-----+---------+-------+
+| employee_id   | int           | NO   | PRI | NULL    |       |
+| first_name    | varchar(50)   | YES  |     | NULL    |       |
+| last_name     | varchar(50)   | YES  |     | NULL    |       |
+| email         | varchar(100)  | YES  |     | NULL    |       |
+| hire_date     | date          | YES  |     | NULL    |       |
+| salary        | decimal(10,2) | YES  |     | NULL    |       |
+| department_id | int           | YES  |     | NULL    |       |
++---------------+---------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> INSERT INTO Employees
+    -> (employee_id, first_name, last_name, email, hire_date, salary, department_id)VALUES
+    -> (101, 'Ravi','Sharma','ravi.sharma@specialforce.com','2017-05-15', 55000, 1),
+    -> (102, 'Neha', 'Kapoor', 'neha.kapoor@specialforce.com', '2019-03-23', 48000, 2),
+    -> (103, 'Jyoti', 'Verma', 'jyoti.verma@specialforce.com', '2020-11-02', 60000, 1),
+    -> (104, 'Anil', 'Patil', 'anil.patil@specialforce.com', '2018-09-18',70000, 3),
+    -> (105, ' Pooja', 'Singh', 'pooja.singh@specialforce.com', '2021-06-10', 40000, 4),
+    -> (106, 'Sanjay', 'Iyer', 'Sanjay.iyer@specialforce.com', '2018-01-22', 75000, 3),
+    -> (107, 'Jatin', 'Reddy', 'jatin.reddy@specialforce.com', '2021-12-12', 85000, 2),
+    -> (108, 'Shreya', 'Mehta', 'Shreya.mehta@specialforce.com', '2022-04-19', 30000, 5),
+    -> (109, 'Rajesh', 'Gupta', 'rajesh.gupta@specialforce.com', '2020-08-11', 90000, 1),
+    -> (110, 'Kavita', 'Nair', 'Kavita.nair@specialforce.com', '2021-02-07', 50000, 2);
+Query OK, 10 rows affected (0.00 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> SELECT * FROM Employee;
+ERROR 1146 (42S02): Table 'company.employee' doesn't exist
+mysql> SELECT * FROM Employees;
++-------------+------------+-----------+-------------------------------+------------+----------+---------------+
+| employee_id | first_name | last_name | email                         | hire_date  | salary   | department_id |
++-------------+------------+-----------+-------------------------------+------------+----------+---------------+
+|         101 | Ravi       | Sharma    | ravi.sharma@specialforce.com  | 2017-05-15 | 55000.00 |             1 |
+|         102 | Neha       | Kapoor    | neha.kapoor@specialforce.com  | 2019-03-23 | 48000.00 |             2 |
+|         103 | Jyoti      | Verma     | jyoti.verma@specialforce.com  | 2020-11-02 | 60000.00 |             1 |
+|         104 | Anil       | Patil     | anil.patil@specialforce.com   | 2018-09-18 | 70000.00 |             3 |
+|         105 |  Pooja     | Singh     | pooja.singh@specialforce.com  | 2021-06-10 | 40000.00 |             4 |
+|         106 | Sanjay     | Iyer      | Sanjay.iyer@specialforce.com  | 2018-01-22 | 75000.00 |             3 |
+|         107 | Jatin      | Reddy     | jatin.reddy@specialforce.com  | 2021-12-12 | 85000.00 |             2 |
+|         108 | Shreya     | Mehta     | Shreya.mehta@specialforce.com | 2022-04-19 | 30000.00 |             5 |
+|         109 | Rajesh     | Gupta     | rajesh.gupta@specialforce.com | 2020-08-11 | 90000.00 |             1 |
+|         110 | Kavita     | Nair      | Kavita.nair@specialforce.com  | 2021-02-07 | 50000.00 |             2 |
++-------------+------------+-----------+-------------------------------+------------+----------+---------------+
+10 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
