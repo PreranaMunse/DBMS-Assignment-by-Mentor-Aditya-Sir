@@ -1,0 +1,47 @@
+
+mysql> CREATE TABLE Departments;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> CREATE TABLE Departments(department_id INT PRIMARY KEY, department_name VARCHAR(50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> CREATE TABLE Departments(department_id INT PRIMARY KEY, department_name VARCHAR(50));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc Departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | NO   | PRI | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> Insert INTO Departments(department_id, department_name)
+    -> VALUES
+    -> (1, 'IT'),
+    -> (2, 'HR'),
+    -> (3, 'Sales'),
+    -> (4, 'Finance'),
+    -> (5, 'Marketing');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> DESC Departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | NO   | PRI | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Departments;
++---------------+-----------------+
+| department_id | department_name |
++---------------+-----------------+
+|             1 | IT              |
+|             2 | HR              |
+|             3 | Sales           |
+|             4 | Finance         |
+|             5 | Marketing       |
++---------------+-----------------+
+5 rows in set (0.00 sec)
